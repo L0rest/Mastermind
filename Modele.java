@@ -39,7 +39,21 @@ public class Modele extends Observable {
             this.état = Etat.PERDU;
         }
         else {
+            modif_blancs_noirs(r);
             new_prop();
+        }
+    }
+
+    public void modif_blancs_noirs(Rangee r) {
+        for (int i = 0; i < r.jetons.length; i++) {
+            if (r.jetons[i] == this.combinaison.jetons[i]) {
+                r.noirs ++;
+            }
+            for (int j = 0; j < this.combinaison.jetons.length; j++) {
+                if (r.jetons[i] == this.combinaison.jetons[j]) {
+                    r.blancs ++;
+                }
+            }
         }
     }
 
