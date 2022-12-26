@@ -30,8 +30,4 @@ public class Vue extends Frame implements Observer  {
 
     }
 
-    public static void main(String[] args) {
-        new Vue();
-        System.out.println("testing git");
-    }
 }
