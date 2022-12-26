@@ -14,5 +14,5 @@ public class Rangee {
         this.noirs = 0;
         this.blancs = 0;
     }
-    
+
 }
