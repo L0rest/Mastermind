@@ -1,7 +1,5 @@
 package ProjetJava.Mastermind;
 
-import TrainGraph.Modèle;
-
 import java.awt.*;
 
 public class Rangee {
