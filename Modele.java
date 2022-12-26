@@ -5,9 +5,11 @@ import java.util.Observable;
 
 public class Modele extends Observable {
 
+    //test tim prout hihihi
     static final Color[] COULEURS = {Color.YELLOW, Color.GREEN, Color.BLUE, Color.MAGENTA, Color.RED, Color.ORANGE, Color.WHITE, Color.BLACK};
     static final int N_TENTATIVES = 10;
     static final int DIFFICULTE = 4;
+
     public enum Etat {
         EN_COURS, GAGNE, PERDU
     }
@@ -30,15 +32,13 @@ public class Modele extends Observable {
 
     public void evaluer(Rangee r) {
         archiver(r);
-        this.tentative ++;
+        this.tentative++;
 
         if (r.jetons == this.combinaison.jetons) {
             this.état = Etat.GAGNE;
-        }
-        else if (this.tentative == Modele.N_TENTATIVES) {
+        } else if (this.tentative == Modele.N_TENTATIVES) {
             this.état = Etat.PERDU;
-        }
-        else {
+        } else {
             modif_blancs_noirs(r);
             new_prop();
         }
@@ -47,11 +47,11 @@ public class Modele extends Observable {
     public void modif_blancs_noirs(Rangee r) {
         for (int i = 0; i < r.jetons.length; i++) {
             if (r.jetons[i] == this.combinaison.jetons[i]) {
-                r.noirs ++;
+                r.noirs++;
             }
             for (int j = 0; j < this.combinaison.jetons.length; j++) {
                 if (r.jetons[i] == this.combinaison.jetons[j]) {
-                    r.blancs ++;
+                    r.blancs++;
                 }
             }
         }
