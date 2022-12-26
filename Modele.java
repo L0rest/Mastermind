@@ -1,8 +1,9 @@
 package ProjetJava.Mastermind;
 
 import java.awt.*;
+import java.util.Observable;
 
-public class Modele {
+public class Modele extends Observable {
 
     static final Color[] COULEURS = {Color.YELLOW, Color.GREEN, Color.BLUE, Color.MAGENTA, Color.RED, Color.ORANGE, Color.WHITE, Color.BLACK};
     static final int N_TENTATIVES = 10;
