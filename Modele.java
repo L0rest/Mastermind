@@ -12,4 +12,5 @@ public class Modele {
     public enum ETAT {
         EN_COURS, GAGNE, PERDU
     }
+    
 }
