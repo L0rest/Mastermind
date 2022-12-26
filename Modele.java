@@ -23,5 +23,27 @@ public class Modele {
         this.tentative = 0;
     }
 
+    public void archiver(Rangee r) {
+        this.propositions[this.tentative] = r;
+    }
+
+    public void evaluer(Rangee r) {
+        archiver(r);
+        this.tentative ++;
+
+        if (r.jetons == this.combinaison.jetons) {
+            this.état = Etat.GAGNE;
+        }
+        else if (this.tentative == Modele.N_TENTATIVES) {
+            this.état = Etat.PERDU;
+        }
+        else {
+            new_prop();
+        }
+    }
+
+    public void new_prop() {
+        this.propositions[this.tentative] = new Rangee();
+    }
 
 }
