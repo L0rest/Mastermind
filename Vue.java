@@ -24,7 +24,7 @@ public class Vue implements Observer  {
 
         this.VuePropositions = new Canvas();
         this.VuePropositions.setPreferredSize(new Dimension(Modele.DIFFICULTE*80 + 40,Modele.N_TENTATIVES*50));
-        
+
     }
 
     @Override
