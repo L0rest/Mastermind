@@ -8,6 +8,7 @@ public class Application extends Frame implements WindowListener {
 
     Modele modl;
     Vue vue;
+
     public Application() {
         super("Mastermind");
         this.setLayout(new BorderLayout());
