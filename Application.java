@@ -7,17 +7,19 @@ import java.awt.event.WindowListener;
 public class Application extends Frame implements WindowListener {
 
     Modele modl;
-    Vue vue;
+    VueClavier partieBasse;
+    VuePropositions partieHaute;
 
     public Application() {
         super("Mastermind");
         this.setLayout(new BorderLayout());
 
         this.modl = new Modele();
-        this.vue = new Vue(modl);
+        this.partieBasse = new VueClavier(modl);
+        this.partieHaute = new VuePropositions(modl);
 
-        this.add(this.vue.VueClavier, BorderLayout.SOUTH);
-        this.add(this.vue.VuePropositions, BorderLayout.NORTH);
+        this.add(this.partieBasse, BorderLayout.SOUTH);
+        this.add(this.partieHaute, BorderLayout.NORTH);
         this.addWindowListener(this);
         this.pack();
         this.setVisible(true);
