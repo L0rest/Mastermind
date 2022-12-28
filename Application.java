@@ -7,6 +7,7 @@ import java.awt.event.WindowListener;
 public class Application extends Frame implements WindowListener {
 
     Modele modl;
+    Controleur control;
     VueClavier partieBasse;
     VuePropositions partieHaute;
 
@@ -15,7 +16,8 @@ public class Application extends Frame implements WindowListener {
         this.setLayout(new BorderLayout());
 
         this.modl = new Modele();
-        this.partieBasse = new VueClavier(modl);
+        this.control = new Controleur(modl);
+        this.partieBasse = new VueClavier(control, modl);
         this.partieHaute = new VuePropositions(modl);
 
         this.add(this.partieBasse, BorderLayout.SOUTH);
