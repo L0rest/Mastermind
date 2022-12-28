@@ -27,6 +27,8 @@ public class Modele extends Observable {
 
     public void archiver(Rangee r) {
         this.propositions[this.tentative] = r;
+        this.setChanged();
+        this.notifyObservers(this.propositions);
     }
 
     public void evaluer(Rangee r) {
@@ -58,6 +60,8 @@ public class Modele extends Observable {
 
     public void new_prop() {
         this.propositions[this.tentative] = new Rangee();
+        this.setChanged();
+        this.notifyObservers(this.propositions);
     }
 
 }
