@@ -1,14 +1,17 @@
 package ProjetJava.Mastermind;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
 public class VueClavier extends Panel implements Observer {
 
     Modele modl;
+    Button[] listeboutons = new Button[Modele.COULEURS.length];
 
-    public VueClavier(Modele m) {
+
+    public VueClavier(ActionListener l, Modele m) {
         super();
         this.modl = m;
 
@@ -17,8 +20,12 @@ public class VueClavier extends Panel implements Observer {
             Button bouton = new Button();
             bouton.setPreferredSize(new Dimension(35,35));
             bouton.setBackground(Modele.COULEURS[i]);
+            this.listeboutons[i] = bouton;
+            this.listeboutons[i].addActionListener(l);
             this.add(bouton);
         }
+
+        this.modl.addObserver(this);
     }
 
     @Override
