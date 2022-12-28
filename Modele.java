@@ -27,8 +27,6 @@ public class Modele extends Observable {
 
     public void archiver(Rangee r) {
         this.propositions[this.tentative] = r;
-        this.setChanged();
-        this.notifyObservers(this.propositions);
     }
 
     public void evaluer(Rangee r) {
@@ -60,6 +58,18 @@ public class Modele extends Observable {
 
     public void new_prop() {
         this.propositions[this.tentative] = new Rangee();
+    }
+
+    public void completer_prop() {
+        Rangee rangee_cour = this.propositions[this.tentative];
+        if (rangee_cour.indiceJeton < 3) {
+            rangee_cour.jetons[rangee_cour.indiceJeton] = Color.RED;
+            rangee_cour.indiceJeton ++;
+        }
+        else {
+            rangee_cour.jetons[rangee_cour.indiceJeton] = Color.RED;
+            evaluer(rangee_cour);
+        }
         this.setChanged();
         this.notifyObservers(this.propositions);
     }
