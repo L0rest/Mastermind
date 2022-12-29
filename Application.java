@@ -23,6 +23,7 @@ public class Application extends Frame implements WindowListener {
         this.add(this.partieBasse, BorderLayout.SOUTH);
         this.add(this.partieHaute, BorderLayout.NORTH);
         this.addWindowListener(this);
+        partieHaute.addMouseListener(control);
         this.pack();
         this.setVisible(true);
     }
