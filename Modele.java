@@ -60,16 +60,17 @@ public class Modele extends Observable {
         this.propositions[this.tentative] = new Rangee();
     }
 
-    public void completer_prop() {
+    public void completer_prop(Color c) {
         Rangee rangee_cour = this.propositions[this.tentative];
+
+        rangee_cour.jetons[rangee_cour.indiceJeton] = c;
         if (rangee_cour.indiceJeton < 3) {
-            rangee_cour.jetons[rangee_cour.indiceJeton] = Color.RED;
             rangee_cour.indiceJeton ++;
         }
         else {
-            rangee_cour.jetons[rangee_cour.indiceJeton] = Color.RED;
             evaluer(rangee_cour);
         }
+
         this.setChanged();
         this.notifyObservers(this.propositions);
     }
