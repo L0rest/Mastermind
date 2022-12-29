@@ -1,6 +1,7 @@
 package ProjetJava.Mastermind;
 
 import java.awt.*;
+import java.util.Arrays;
 import java.util.Observable;
 
 public class Modele extends Observable {
@@ -33,7 +34,7 @@ public class Modele extends Observable {
         archiver(r);
         this.tentative++;
 
-        if (r.jetons == this.combinaison.jetons) {
+        if (Arrays.toString(r.jetons).equals(Arrays.toString(this.combinaison.jetons))) {
             this.état = Etat.GAGNE;
         } else if (this.tentative == Modele.N_TENTATIVES) {
             this.état = Etat.PERDU;
@@ -73,6 +74,20 @@ public class Modele extends Observable {
 
         this.setChanged();
         this.notifyObservers(this.propositions);
+    }
+
+    public void annuler() {
+        Rangee rangee_cour = this.propositions[this.tentative];
+
+        if (rangee_cour.indiceJeton > 0) {
+            rangee_cour.indiceJeton --;
+            rangee_cour.jetons[rangee_cour.indiceJeton] = null;
+            archiver(rangee_cour);
+
+            this.setChanged();
+            this.notifyObservers(this.propositions);
+        }
+
     }
 
 }
