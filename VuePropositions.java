@@ -28,6 +28,15 @@ public class VuePropositions extends Canvas implements Observer {
                     g.setColor(Color.BLACK);
                     g.drawOval((60*j) + 30, (60*i) + 10, 40, 40);
                 }
+                for (int j = 0; j < this.modl.propositions[i].noirs + this.modl.propositions[i].blancs; j++) {
+                    if (j < this.modl.propositions[i].noirs) {
+                        g.fillOval(270 + (20*j), (60*i) + 10, 15, 15);
+                    }
+                    else {
+                        g.drawOval(270 + (20*j), (60*i) + 10, 15, 15);
+                    }
+                }
+
             }
         }
 
