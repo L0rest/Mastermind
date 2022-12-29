@@ -3,9 +3,11 @@ package ProjetJava.Mastermind;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Random;
 
-public class Controleur implements ActionListener {
+public class Controleur implements ActionListener, MouseListener {
 
     Modele modl;
     Random rand;
@@ -25,11 +27,35 @@ public class Controleur implements ActionListener {
         if (this.modl.état == Modele.Etat.EN_COURS) {
             this.modl.completer_prop(couleur);
         }
-        else if (this.modl.état == Modele.Etat.GAGNE) {
-            System.out.println("GAGNE");
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if (e.getButton() == MouseEvent.BUTTON1) {
+            if (e.getClickCount() == 2) {
+                this.modl.annuler();
+            }
         }
-        else {
-            System.out.println("PERDU");
-        }
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }
