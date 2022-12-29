@@ -1,6 +1,7 @@
 package ProjetJava.Mastermind;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Observable;
@@ -46,21 +47,28 @@ public class Modele extends Observable {
     }
 
     public void modif_blancs_noirs(Rangee r) {
-        for (int i = 0; i < r.jetons.length; i++) {
-            if (Objects.equals(r.jetons[i].toString(), this.combinaison.jetons[i].toString())) {
+        ArrayList<Color> rComb = new ArrayList<>(Arrays.asList(this.combinaison.jetons));
+        ArrayList<Color> rProp = new ArrayList<>(Arrays.asList(r.jetons));
+        int i = 0;
+
+        while (i < rProp.size()) {
+            if (Objects.equals(rProp.get(i).toString(), rComb.get(i).toString())) {
                 r.noirs++;
+                rComb.remove(i);
+                rProp.remove(i);
             }
-            boolean contenu = false;
-            int j = 0;
-            while (!contenu && j < this.combinaison.jetons.length) {
-                if (Objects.equals(r.jetons[i].toString(), this.combinaison.jetons[j].toString())) {
-                    contenu = true;
-                    r.blancs ++;
-                }
-                else {j++;}
+            else {
+                i++;
             }
         }
-        r.blancs -= r.noirs;
+
+        for (Color couleurProp : rProp) {
+            if (rComb.contains(couleurProp)) {
+                r.blancs++;
+                rComb.set(rComb.indexOf(couleurProp), null);
+            }
+        }
+
     }
 
     public void new_prop() {
