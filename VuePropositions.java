@@ -11,7 +11,7 @@ public class VuePropositions extends Canvas implements Observer {
     public VuePropositions(Modele m) {
         super();
         this.modl = m;
-        this.setPreferredSize(new Dimension(Modele.DIFFICULTE*80 + 40,Modele.N_TENTATIVES*80));
+        this.setPreferredSize(new Dimension(Modele.DIFFICULTE*80 + 40,Modele.N_TENTATIVES*65));
 
         this.modl.addObserver(this);
 
