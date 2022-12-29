@@ -1,5 +1,6 @@
 package ProjetJava.Mastermind;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
@@ -20,8 +21,15 @@ public class Controleur implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        Color couleur = new Color(Integer.parseInt(e.getActionCommand()));
         if (this.modl.état == Modele.Etat.EN_COURS) {
-            this.modl.completer_prop();
+            this.modl.completer_prop(couleur);
+        }
+        else if (this.modl.état == Modele.Etat.GAGNE) {
+            System.out.println("GAGNE");
+        }
+        else {
+            System.out.println("PERDU");
         }
     }
 }
