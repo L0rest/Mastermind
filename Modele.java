@@ -2,6 +2,7 @@ package ProjetJava.Mastermind;
 
 import java.awt.*;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Observable;
 
 public class Modele extends Observable {
@@ -31,6 +32,7 @@ public class Modele extends Observable {
     }
 
     public void evaluer(Rangee r) {
+        modif_blancs_noirs(r);
         archiver(r);
         this.tentative++;
 
@@ -39,22 +41,26 @@ public class Modele extends Observable {
         } else if (this.tentative == Modele.N_TENTATIVES) {
             this.état = Etat.PERDU;
         } else {
-            modif_blancs_noirs(r);
             new_prop();
         }
     }
 
     public void modif_blancs_noirs(Rangee r) {
         for (int i = 0; i < r.jetons.length; i++) {
-            if (r.jetons[i] == this.combinaison.jetons[i]) {
+            if (Objects.equals(r.jetons[i].toString(), this.combinaison.jetons[i].toString())) {
                 r.noirs++;
             }
-            for (int j = 0; j < this.combinaison.jetons.length; j++) {
-                if (r.jetons[i] == this.combinaison.jetons[j]) {
-                    r.blancs++;
+            boolean contenu = false;
+            int j = 0;
+            while (!contenu && j < this.combinaison.jetons.length) {
+                if (Objects.equals(r.jetons[i].toString(), this.combinaison.jetons[j].toString())) {
+                    contenu = true;
+                    r.blancs ++;
                 }
+                else {j++;}
             }
         }
+        r.blancs -= r.noirs;
     }
 
     public void new_prop() {
