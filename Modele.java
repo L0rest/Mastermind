@@ -65,7 +65,7 @@ public class Modele extends Observable {
         for (Color couleurProp : rProp) {
             if (rComb.contains(couleurProp)) {
                 r.blancs++;
-                rComb.set(rComb.indexOf(couleurProp), null);
+                rComb.remove(couleurProp);
             }
         }
 
