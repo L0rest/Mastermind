@@ -15,16 +15,4 @@ public class Rangee {
         this.blancs = 0;
     }
 
-    public String toString() {
-        String s = "";
-        int i = 0;
-
-        while (i < Modele.DIFFICULTE && this.jetons[i] != null) {
-            s += this.jetons[i].toString() + " | ";
-            i++;
-        }
-
-        return s;
-    }
-
 }
