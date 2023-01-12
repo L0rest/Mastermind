@@ -5,20 +5,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Random;
 
 public class Controleur implements ActionListener, MouseListener {
 
     Modele modl;
-    Random rand;
 
     public Controleur(Modele m) {
         this.modl = m;
-        this.rand = new Random();
-        for (int i = 0; i < Modele.DIFFICULTE; i++) {
-            this.modl.combinaison.jetons[i] = Modele.COULEURS[rand.nextInt(Modele.COULEURS.length)];
-        }
-        this.modl.propositions[0] = new Rangee();
     }
 
     @Override
