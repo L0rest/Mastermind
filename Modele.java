@@ -1,10 +1,7 @@
 package ProjetJava.Mastermind;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.Observable;
+import java.util.*;
 
 public class Modele extends Observable {
 
@@ -26,6 +23,8 @@ public class Modele extends Observable {
         this.combinaison = new Rangee();
         this.propositions = new Rangee[N_TENTATIVES];
         this.tentative = 0;
+
+        new_game();
     }
 
     public void archiver(Rangee r) {
@@ -56,8 +55,7 @@ public class Modele extends Observable {
                 r.noirs++;
                 rComb.remove(i);
                 rProp.remove(i);
-            }
-            else {
+            } else {
                 i++;
             }
         }
@@ -80,9 +78,8 @@ public class Modele extends Observable {
 
         rangee_cour.jetons[rangee_cour.indiceJeton] = c;
         if (rangee_cour.indiceJeton < 3) {
-            rangee_cour.indiceJeton ++;
-        }
-        else {
+            rangee_cour.indiceJeton++;
+        } else {
             evaluer(rangee_cour);
         }
 
@@ -90,11 +87,19 @@ public class Modele extends Observable {
         this.notifyObservers(this.propositions);
     }
 
+    public void new_game() {
+        Random rand = new Random();
+        for (int i = 0; i < Modele.DIFFICULTE; i++) {
+            this.combinaison.jetons[i] = Modele.COULEURS[rand.nextInt(Modele.COULEURS.length)];
+        }
+        this.propositions[0] = new Rangee();
+    }
+
     public void annuler() {
         Rangee rangee_cour = this.propositions[this.tentative];
 
         if (rangee_cour.indiceJeton > 0) {
-            rangee_cour.indiceJeton --;
+            rangee_cour.indiceJeton--;
             rangee_cour.jetons[rangee_cour.indiceJeton] = null;
             archiver(rangee_cour);
 
