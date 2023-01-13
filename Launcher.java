@@ -4,14 +4,14 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-public class Application extends Frame implements WindowListener {
+public class Launcher extends Frame implements WindowListener {
 
     Modele modl;
     Controleur control;
     VueClavier partieBasse;
     VuePropositions partieHaute;
 
-    public Application() {
+    public Launcher() {
         super("Mastermind");
         this.setLayout(new BorderLayout());
 
@@ -30,7 +30,7 @@ public class Application extends Frame implements WindowListener {
 
     public static void main(String[] args) {
 
-        new Application();
+        new Launcher();
     }
 
     @Override
